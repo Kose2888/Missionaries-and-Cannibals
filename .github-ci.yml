@@ -1,5 +1,5 @@
 stages:
-   - documentation
+   #- documentation
    - quality
    - build
    - unit_test
@@ -17,10 +17,10 @@ docs:
       paths:
          - docs/code/src
 
-versionInfo:
-   stage: documentation
-   script:
-      - make version
+#versionInfo:
+#   stage: documentation
+#   script:
+#      - make version
 
 styleCheck:
    stage: quality
