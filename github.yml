@@ -1,8 +1,0 @@
-name: M&C Pipeline
-
-jobs:
-  job_1:
-    name: Static Test
-    run: 
-      static
-    
