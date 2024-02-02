@@ -1,5 +1,5 @@
 stages:
-   #- documentation
+   - documentation
    - quality
    - build
    - unit_test
