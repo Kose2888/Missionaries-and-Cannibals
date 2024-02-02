@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include "State.h"
 
 class Node {
   private:
