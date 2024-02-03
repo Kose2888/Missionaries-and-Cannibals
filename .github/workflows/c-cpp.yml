@@ -13,5 +13,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: make
-      run: make
+    - name: make static
+      run: make static
+    - name: style
+      run: make style
+    - name: build
+      run: make test_project
+    - name: unit_test
+      run: test_project
+    - name: MemCheck
+      run: make memcheck
+    - name: coverage
+      run: make coverage
+
+
