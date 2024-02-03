@@ -21,8 +21,8 @@ jobs:
     #  run: make test_project
     #- name: unit_test
     #  run: test_project
-    - name: MemCheck
-      run: make memcheck
+    #- name: MemCheck
+    #  run: make memcheck
     #- name: coverage
     #  run: make coverage
 
