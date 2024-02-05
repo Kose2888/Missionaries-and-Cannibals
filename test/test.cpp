@@ -66,6 +66,10 @@ TEST(Test, addChildNodeTest) {
 
   root->addChild(child);
 
+  child->s.setState(3, 0, 3, 0, 0);
+
+  EXPECT_TRUE(child->s.isStartState());
+
   EXPECT_EQ(root->children.size(), 1);
   EXPECT_EQ(child->id, 1);
   EXPECT_EQ(child->parent, root);
