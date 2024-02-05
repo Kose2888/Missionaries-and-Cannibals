@@ -15,6 +15,23 @@ class State {
 
     ~State();
 
+    void setState(int lM, int rM, int lC, int rC, int boat);
+
+    void viewState();
+
+    int getlM() const {return lM;}
+
+    int getrM() const {return rM;}
+
+    int getlC() const {return lC;}
+
+    int getrC() const {return rC;}
+
+    int getBoat() const {return boat;}
+
+    bool isStartState();
+
+    bool isGoalState();
 };
 
 

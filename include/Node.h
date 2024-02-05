@@ -3,17 +3,16 @@
 
 #include <iostream>
 #include <vector>
+
 #include "State.h"
 
 class Node {
-  private:
+  public:
     int id;
     Node *parent;
     std::vector<Node *> children;
-
     State s;
 
-  public:
     Node();
 
     ~Node();
