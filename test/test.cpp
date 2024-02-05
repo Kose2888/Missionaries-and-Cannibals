@@ -84,3 +84,29 @@ TEST(Test, addChildNodeTest) {
 
   delete root;
 }
+
+TEST(Test, mvOneCTest) {
+  Node *root = new Node;
+  Actions *a = new Actions;
+
+  root->s.setState(3, 0, 3, 0, 0);
+
+  //Moving Cannibal from left to right
+  a->mvOneC(root);
+
+  EXPECT_EQ(root->children[0]->s.getlC(), 2);
+  EXPECT_EQ(root->children[0]->s.getrC(), 1);
+  EXPECT_EQ(root->children[0]->s.getBoat(), 1);
+
+  root->s.setState(3, 0, 2, 1, 1);
+
+  //Moving Cannibal from right to left
+  a->mvOneC(root);
+
+  EXPECT_EQ(root->children[1]->s.getlC(), 3);
+  EXPECT_EQ(root->children[1]->s.getrC(), 0);
+  EXPECT_EQ(root->children[1]->s.getBoat(), 0);
+
+  delete root;
+  delete a;
+}

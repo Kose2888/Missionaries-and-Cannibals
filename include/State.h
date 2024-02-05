@@ -15,9 +15,15 @@ class State {
 
     ~State();
 
-    void setState(int lM, int rM, int lC, int rC, int boat);
+    void setlM(int);
 
-    void viewState();
+    void setrM(int);
+
+    void setlC(int);
+
+    void setrC(int);
+
+    void setBoat(int);
 
     int getlM() const {return lM;}
 
@@ -28,6 +34,10 @@ class State {
     int getrC() const {return rC;}
 
     int getBoat() const {return boat;}
+
+    void setState(int lM, int rM, int lC, int rC, int boat);
+
+    void viewState();
 
     bool isStartState();
 

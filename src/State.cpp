@@ -12,6 +12,41 @@ State::State() {
 State::~State() {
 }
 
+void State::setlM(int n) {
+  if(n >= 0 && n <= 3)
+    lM = n;
+  else
+    std::cout << "Error: Invalid number of Missionaries" << std::endl;
+}
+
+void State::setrM(int n) {
+  if(n >= 0 && n <= 3)
+    rM = n;
+  else
+    std::cout << "Error: Invalid number of Missionaries" << std::endl;
+}
+
+void State::setlC(int n) {
+  if(n >= 0 && n <= 3)
+    lC = n;
+  else
+    std::cout << "Error: Invalid number of Cannibals" << std::endl;
+}
+
+void State::setrC(int n) {
+  if(n >= 0 && n <= 3)
+    rC = n;
+  else
+    std::cout << "Error: Invalid number of Cannibals" << std::endl;
+}
+
+void State::setBoat(int n) {
+  if(n == 0 || n == 1)
+    boat = n;
+  else
+    std::cout << "Error: Invalid boat placement" << std::endl;
+}
+
 void State::setState(int lMis, int rMis, int lCan, int rCan, int b) {
   lM = lMis;
   rM = rMis;
