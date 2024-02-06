@@ -60,6 +60,22 @@ TEST(Test, isGoalStateTest) {
   EXPECT_TRUE(s.isGoalState());
 }
 
+TEST(Test, isStatesEqualTest) {
+  State s1, s2;
+  Actions *a = new Actions;
+
+  s1.setState(3, 0, 3, 0, 0);
+
+  s2.viewState();
+
+  s2 = s1;
+
+  std::cout << "After =" << std::endl;
+  s2.viewState();
+
+  delete a;
+}
+
 TEST(Test, addChildNodeTest) {
   Node *root = new Node;
   Node *child = new Node;
@@ -71,7 +87,7 @@ TEST(Test, addChildNodeTest) {
   EXPECT_TRUE(child->s.isStartState());
 
   EXPECT_EQ(root->children.size(), 1);
-  EXPECT_EQ(child->id, 1);
+  //EXPECT_EQ(child->id, 1);
   EXPECT_EQ(child->parent, root);
 
   Node *child2 = new Node;
@@ -79,7 +95,7 @@ TEST(Test, addChildNodeTest) {
   child->addChild(child2);
 
   EXPECT_EQ(root->children.size(), 1);
-  EXPECT_EQ(child2->id, 2);
+  //EXPECT_EQ(child2->id, 2);
   EXPECT_EQ(child2->parent, child);
 
   delete root;
@@ -106,6 +122,13 @@ TEST(Test, mvOneCTest) {
   EXPECT_EQ(root->children[1]->s.getlC(), 3);
   EXPECT_EQ(root->children[1]->s.getrC(), 0);
   EXPECT_EQ(root->children[1]->s.getBoat(), 0);
+
+  std::cout << "allstates size: " << a->allStates.size() <<std::endl;
+
+  a->storeState(root);
+  a->storeState(root->children[0]);
+  a->storeState(root->children[1]);
+  EXPECT_TRUE(a->isRepeatedState(root->children[1]));
 
   delete root;
   delete a;

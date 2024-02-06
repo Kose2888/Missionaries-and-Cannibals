@@ -42,6 +42,7 @@ class State {
     bool isStartState();
 
     bool isGoalState();
+
 };
 
 
