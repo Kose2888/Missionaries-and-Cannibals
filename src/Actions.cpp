@@ -40,8 +40,6 @@ bool Actions::isRepeatedState(Node *n) {
 }
 
 void Actions::mvOneC(Node *n) {
-  //Somewhere have to check for repeated states
-
   if(n->s.getBoat() == 0) { //Boat on left side
                             //Check if moving one cannibal is legal
     if(n->s.getlC() != 0 && n->s.getrC() != 3){
@@ -76,13 +74,131 @@ void Actions::mvOneC(Node *n) {
 }
 
 void Actions::mvTwoC(Node *n) {
+  if(n->s.getBoat() == 0) { //Boat on left side
+                            //Check if moving one cannibal is legal
+    if(n->s.getlC() >= 2 && n->s.getrC() <= 1){
+      Node *child = new Node;
+      n->addChild(child);
+      child->s.setlC(n->s.getlC() - 2);
+      child->s.setrC(n->s.getrC() + 2);
+      child->s.setBoat(1); //Boat has moved to right side now
+
+      if(isRepeatedState(child))
+        delete child;
+    }
+    return;
+  }
+  if(n->s.getBoat() == 1) { //Boat on right side
+                            //Check if moving one cannibal is legal
+    if(n->s.getlC() <= 1 && n->s.getrC() >= 2){
+      Node *child = new Node;
+      n->addChild(child);
+      child->s.setlC(n->s.getlC() + 2);
+      child->s.setrC(n->s.getrC() - 2);
+      child->s.setBoat(0); //Boat has moved to right side now
+
+      if(isRepeatedState(child))
+        delete child;
+    }
+    return;
+  }
 }
 
 void Actions::mvOneM(Node *n) {
+  if(n->s.getBoat() == 0) { //Boat on left side
+                            //Check if moving one cannibal is legal
+    if(n->s.getlM() != 0 && n->s.getrM() != 3){
+      Node *child = new Node;
+      n->addChild(child);
+      child->s.setlM(n->s.getlM() - 1);
+      child->s.setrM(n->s.getrM() + 1);
+      child->s.setBoat(1); //Boat has moved to right side now
+
+      if(isRepeatedState(child))
+        delete child;
+    }
+    return;
+  }
+  if(n->s.getBoat() == 1) { //Boat on right side
+                            //Check if moving one cannibal is legal
+    if(n->s.getlM() != 3 && n->s.getrM() != 0){
+      Node *child = new Node;
+      n->addChild(child);
+      child->s.setlM(n->s.getlM() + 1);
+      child->s.setrM(n->s.getrM() - 1);
+      child->s.setBoat(0); //Boat has moved to right side now
+
+      if(isRepeatedState(child))
+        delete child;
+    }
+    return;
+  }
 }
 
 void Actions::mvTwoM(Node *n) {
+  if(n->s.getBoat() == 0) { //Boat on left side
+                            //Check if moving one cannibal is legal
+    if(n->s.getlM() >= 2 && n->s.getrM() <= 1){
+      Node *child = new Node;
+      n->addChild(child);
+      child->s.setlM(n->s.getlM() - 2);
+      child->s.setrM(n->s.getrM() + 2);
+      child->s.setBoat(1); //Boat has moved to right side now
+
+      if(isRepeatedState(child))
+        delete child;
+    }
+    return;
+  }
+  if(n->s.getBoat() == 1) { //Boat on right side
+                            //Check if moving one cannibal is legal
+    if(n->s.getlM() <= 1 && n->s.getrM() >= 2){
+      Node *child = new Node;
+      n->addChild(child);
+      child->s.setlM(n->s.getlM() + 2);
+      child->s.setrM(n->s.getrM() - 2);
+      child->s.setBoat(0); //Boat has moved to right side now
+
+      if(isRepeatedState(child))
+        delete child;
+    }
+    return;
+  }
 }
 
 void Actions::mvBoth(Node *n) {
+  if(n->s.getBoat() == 0) { //Boat on left side
+                            //Check if moving one cannibal is legal
+    if(n->s.getlM() != 0 && n->s.getrM() != 3 &&
+       n->s.getlC() != 0 && n->s.getrC() != 3){
+      Node *child = new Node;
+      n->addChild(child);
+      child->s.setlM(n->s.getlM() - 1);
+      child->s.setrM(n->s.getrM() + 1);
+      child->s.setlC(n->s.getlC() - 1);
+      child->s.setrC(n->s.getrC() + 1);
+      child->s.setBoat(1); //Boat has moved to right side now
+
+      if(isRepeatedState(child))
+        delete child;
+    }
+    return;
+  }
+  if(n->s.getBoat() == 1) { //Boat on right side
+                            //Check if moving one cannibal is legal
+    if(n->s.getlM() != 3 && n->s.getrM() != 0 &&
+       n->s.getlC() != 3 && n->s.getrC() != 0){
+      Node *child = new Node;
+      n->addChild(child);
+      child->s.setlM(n->s.getlM() + 1);
+      child->s.setrM(n->s.getrM() - 1);
+      child->s.setlC(n->s.getlC() + 1);
+      child->s.setrC(n->s.getrC() - 1);
+      child->s.setBoat(1); //Boat has moved to right side now
+
+      if(isRepeatedState(child))
+        delete child;
+    }
+    return;
+  }
 }
