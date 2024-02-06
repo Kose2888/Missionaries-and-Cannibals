@@ -196,7 +196,7 @@ void Actions::mvBoth(Node *n) {
       child->s.setrM(n->s.getrM() - 1);
       child->s.setlC(n->s.getlC() + 1);
       child->s.setrC(n->s.getrC() - 1);
-      child->s.setBoat(1); //Boat has moved to right side now
+      child->s.setBoat(0); //Boat has moved to right side now
 
       if(isRepeatedState(child) || child->s.isOutNumbered())
         n->children.pop_back();
