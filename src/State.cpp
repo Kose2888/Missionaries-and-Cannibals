@@ -63,9 +63,9 @@ void State::viewState() {
     << "Right Cannibals = " << rC << "\n" << std::endl;
 
   if (boat == 0)
-    std::cout << "Boat is on left side" << std::endl;
+    std::cout << "Boat is on left side\n\n" << std::endl;
   else
-    std::cout << "Boat is on right side" << std::endl;
+    std::cout << "Boat is on right side\n\n" << std::endl;
 }
 
 bool State::isStartState() {
@@ -80,4 +80,13 @@ bool State::isGoalState() {
    return true;
   else
    return false;
+}
+
+bool State::isOutNumbered() {
+  if(lM >= 1 && lM < lC)
+    return true;
+  if(rM >= 1 && rM < rC)
+    return true;
+  else
+    return false;
 }

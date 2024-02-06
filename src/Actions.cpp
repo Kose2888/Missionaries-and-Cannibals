@@ -49,8 +49,9 @@ void Actions::mvOneC(Node *n) {
       child->s.setrC(n->s.getrC() + 1);
       child->s.setBoat(1); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered()) {
+        n->children.pop_back();
+      }
     }
     return;
   }
@@ -63,8 +64,8 @@ void Actions::mvOneC(Node *n) {
       child->s.setrC(n->s.getrC() - 1);
       child->s.setBoat(0); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered())
+        n->children.pop_back();
     }
     return;
   }
@@ -83,8 +84,8 @@ void Actions::mvTwoC(Node *n) {
       child->s.setrC(n->s.getrC() + 2);
       child->s.setBoat(1); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered())
+        n->children.pop_back();
     }
     return;
   }
@@ -97,8 +98,8 @@ void Actions::mvTwoC(Node *n) {
       child->s.setrC(n->s.getrC() - 2);
       child->s.setBoat(0); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered())
+        n->children.pop_back();
     }
     return;
   }
@@ -114,10 +115,11 @@ void Actions::mvOneM(Node *n) {
       child->s.setrM(n->s.getrM() + 1);
       child->s.setBoat(1); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered()){
+        n->children.pop_back();
+      }
+      return;
     }
-    return;
   }
   if(n->s.getBoat() == 1) { //Boat on right side
                             //Check if moving one cannibal is legal
@@ -128,8 +130,8 @@ void Actions::mvOneM(Node *n) {
       child->s.setrM(n->s.getrM() - 1);
       child->s.setBoat(0); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered())
+        n->children.pop_back();
     }
     return;
   }
@@ -145,8 +147,8 @@ void Actions::mvTwoM(Node *n) {
       child->s.setrM(n->s.getrM() + 2);
       child->s.setBoat(1); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered())
+        n->children.pop_back();
     }
     return;
   }
@@ -159,8 +161,8 @@ void Actions::mvTwoM(Node *n) {
       child->s.setrM(n->s.getrM() - 2);
       child->s.setBoat(0); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered())
+        n->children.pop_back();
     }
     return;
   }
@@ -179,8 +181,8 @@ void Actions::mvBoth(Node *n) {
       child->s.setrC(n->s.getrC() + 1);
       child->s.setBoat(1); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered())
+        n->children.pop_back();
     }
     return;
   }
@@ -196,8 +198,8 @@ void Actions::mvBoth(Node *n) {
       child->s.setrC(n->s.getrC() - 1);
       child->s.setBoat(1); //Boat has moved to right side now
 
-      if(isRepeatedState(child))
-        delete child;
+      if(isRepeatedState(child) || child->s.isOutNumbered())
+        n->children.pop_back();
     }
     return;
   }

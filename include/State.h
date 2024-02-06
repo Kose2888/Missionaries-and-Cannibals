@@ -43,6 +43,8 @@ class State {
 
     bool isGoalState();
 
+    bool isOutNumbered();
+
 };
 
 
