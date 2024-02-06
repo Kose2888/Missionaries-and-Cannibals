@@ -32,6 +32,7 @@ int main (int argc, char *argv []) {
   std::cout << "Output the goal" << std::endl;
   goal->s.viewState();
 
+
   delete root;
   delete a;
 }
@@ -50,6 +51,7 @@ Node* bfs(Node *n, Actions *a){
 
       if(n->children[i]->s.isGoalState()) {
         std::cout << "Goal State has been found!" << std::endl;
+        n->children[i]->s.viewState();
         return n->children[i];
       }
 
